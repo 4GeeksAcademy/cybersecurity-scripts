@@ -1,7 +1,9 @@
 # cybersecurity-scripts
 
-## Repository of scripts used in the cybersecurity bootcamp
+## `00` Prework
 
-- Install VirtualBox for linux
-- Send VMs data to learnpack from windows
-- Send VMs data to learnpack from linux
+1. Install VirtualBox for linux
+1. Send VMs data to learnpack from windows
+1. Send VMs data to learnpack from linux
+
+## `02` Linux
