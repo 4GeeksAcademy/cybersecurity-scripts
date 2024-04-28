@@ -28,7 +28,7 @@ function generar_arreglo_json() {
 comando="crontab -l | grep -v \#"
 crontab_data=$(generar_arreglo_json "$comando");
 
-if [ "$3" -eq 1 ]; then
+if [ -z $3 ]; then
   echo "Crontab data: $crontab_data"
 fi
 
@@ -51,7 +51,7 @@ fi
 
 # Leer el contenido del archivo
 contenido_archivo=$(cat "$archivo")
-if [ "$3" -eq 1 ]; then
+if [ -z $3 ]; then
   echo $contenido_archivo
 fi
 echo "_______________________________________________________"
@@ -68,7 +68,7 @@ fi
 # Parametros de la petición
 cabeceras="Content-Type: application/json"
 data='{"scriptText":"'$contenido_archivo'","crontabData":'$crontab_data', "scriptFile":"'$archivo'"}'
-if [ "$3" -eq 1 ]; then
+if [ -z $3 ]; then
   echo "Data:"
   echo "$data"
 fi
