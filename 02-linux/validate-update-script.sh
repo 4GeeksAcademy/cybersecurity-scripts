@@ -28,7 +28,7 @@ function generar_arreglo_json() {
 comando="crontab -l | grep -v \#"
 crontab_data=$(generar_arreglo_json "$comando");
 
-if["$3" -eq 1];then
+if [ "$3" -eq 1 ]; then
   echo "Crontab data: $crontab_data"
 fi
 
@@ -38,7 +38,7 @@ if [-z $1];then
   echo "Ingrese el nombre del script inluyendo la ruta completa"
   echo "Type the file name including the full path "
   read archivo
-  if["$3" -eq 1];then
+  if [ "$3" -eq 1 ]; then
     echo "Ruta archivo: $archivo"
   fi
 fi
@@ -51,7 +51,7 @@ fi
 
 # Leer el contenido del archivo
 contenido_archivo=$(cat "$archivo")
-if["$3" -eq 1];then
+if [ "$3" -eq 1 ]; then
   echo $contenido_archivo
 fi
 echo "_______________________________________________________"
