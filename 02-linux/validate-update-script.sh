@@ -68,7 +68,10 @@ fi
 # Parametros de la petición
 cabeceras="Content-Type: application/json"
 data='{"scriptText":"'$contenido_archivo'","crontabData":'$crontab_data', "scriptFile":"'$archivo'"}'
-echo "$data"
+if [ "$3" -eq 1 ]; then
+  echo "Data:"
+  echo "$data"
+fi
 echo "_______________________________________________________"
 
 # Enviar la petición POST usando curl
