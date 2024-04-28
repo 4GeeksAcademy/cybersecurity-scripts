@@ -33,7 +33,7 @@ if [ "$3" -eq 1 ]; then
 fi
 
 archivo=$1
-if [-z $1];then
+if [ -z $1 ];then
   # Solicitar la dirección del archivo al usuario
   echo "Ingrese el nombre del script inluyendo la ruta completa"
   echo "Type the file name including the full path "
@@ -57,7 +57,7 @@ fi
 echo "_______________________________________________________"
 
 url=$2
-if [-z $2];then
+if [ -z $2 ];then
   # URL de la petición POST (reemplaza con la URL de tu servidor)
   echo "Ingrese la dirección de learnpack"
   echo "Type learnpack address"
