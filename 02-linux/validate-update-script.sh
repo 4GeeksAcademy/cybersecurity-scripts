@@ -73,7 +73,7 @@ update_data=$(generar_arreglo_json "$comando");
 
 # Parametros de la petición
 cabeceras="Content-Type: application/json"
-data='{"scriptText":"'$contenido_archivo'","crontabData":'$crontab_data', "scriptFile":"'$archivo'","timestamp":"'$fecha_hora'","updateData":"'$update_data'"}'
+data='{"scriptText":"'$contenido_archivo'","crontabData":'$crontab_data', "scriptFile":"'$archivo'","timestamp":"'$fecha_hora'","updateData":'$update_data'}'
 if [ ! -z "$3" ]; then
   echo "Data:"
   echo "$data"
