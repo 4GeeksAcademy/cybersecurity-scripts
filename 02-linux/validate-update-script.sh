@@ -50,7 +50,7 @@ if [ ! -f "$archivo" ]; then
 fi
 
 # Leer el contenido del archivo
-contenido_archivo=$(cat "$archivo")
+contenido_archivo=$(base64 "$archivo")
 if [ ! -z "$3" ]; then
   echo $contenido_archivo
 fi
