@@ -64,10 +64,16 @@ if [ -z $2 ];then
   read url
 fi
 
+fecha_hora=$(date +"%Y-%m-%d %H:%M:%S")
+
+# Update data
+comando="stat /var/cache/apt/pkgcache.bin | head -n 6 | tail -n 2"
+update_data=$(generar_arreglo_json "$comando");
+
 
 # Parametros de la petición
 cabeceras="Content-Type: application/json"
-data='{"scriptText":"'$contenido_archivo'","crontabData":'$crontab_data', "scriptFile":"'$archivo'"}'
+data='{"scriptText":"'$contenido_archivo'","crontabData":'$crontab_data', "scriptFile":"'$archivo'","timestamp":"'$fecha_hora'","updateData":"'$update_data'"}'
 if [ ! -z "$3" ]; then
   echo "Data:"
   echo "$data"
