@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 function generar_arreglo_json() {
   # Verificar si se proporcionó un comando
   if [ $# -eq 0 ]; then
