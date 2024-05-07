@@ -3,6 +3,9 @@
 # Cambiar al directorio del proyecto
 cd $HOME/cybersecurity-scripts
 
+if [ ! -f ".sync-scripts.log" ]; then  touch .sync-scripts.log; fi
+if [ ! -f ".sync-scripts.error.log" ]; then touch .sync-scripts.error.log; fi
+
 # Actualizar la rama local
 git reset --hard origin/main
 git pull --allow-unrelated-histories origin main >>/home/deb/.sync-scripts.log 2> /home/deb/.sync-scripts.error.log
