@@ -1,4 +1,4 @@
-cd $$HOME
+cd $HOME
 
 git clone https://github.com/4GeeksAcademy/cybersecurity-scripts.git
 
