@@ -8,7 +8,7 @@ if [ ! -f ".sync-scripts.error.log" ]; then touch .sync-scripts.error.log; fi
 
 # Actualizar la rama local
 git reset --hard origin/main
-git pull --allow-unrelated-histories origin main >>/home/deb/.sync-scripts.log 2> /home/deb/.sync-scripts.error.log
+git pull --allow-unrelated-histories origin main >>.sync-scripts.log 2>.sync-scripts.error.log
 
 if [[ $? -ne 0 ]]; then
   echo "Error: Script failed with exit code $?"
