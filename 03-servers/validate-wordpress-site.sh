@@ -1,39 +1,10 @@
 #!/bin/bash
 
-function generar_arreglo_json() {
-  # Verificar si se proporcionó un comando
-  if [ $# -eq 0 ]; then
-    echo "Error: Se debe especificar un comando."
-    return 1
-  fi
+apache_status=$(eval "systemctl status apache2|grep active");
 
-  # Ejecutar el comando y capturar la salida
-  comando="$1"
-  salida=$(eval "$comando")
+mariadb_status=$(eval "systemctl status mariadb|grep active");
 
-  # Inicializar el arreglo JSON
-  array=()
-
-  # Convertir cada línea de salida en un objeto JSON y agregarlo al arreglo
-  while read -r line; do
-    array+=("\"$line\"")
-  done <<< "$salida"
-
-  # Imprimir el arreglo JSON
-  echo "[$(IFS=','; echo "${array[*]}")]"
-}
-
-$command="cat /var/www/html/wordpress/wp-config.php| grep DB"
-db_config=$(generar_arreglo_json "$comando");
-
-$command="systemctl status apache2|grep active"
-apache_status=$($comando);
-
-$command="systemctl status mariadb|grep active"
-mariadb_status=$($comando);
-
-$command="curl http://localhost/wordpress/index.php/wp-json/wp-site-health/v1"
-site_data=$($comando);
+site_data=$(eval "curl -s http://localhost/wordpress/index.php/wp-json/wp-site-health/v1");
 
 url=$1
 if [ -z $1 ];then
@@ -43,8 +14,9 @@ if [ -z $1 ];then
   read url
 fi
 
-data='{"databaseConfig":'$db_config',"apacheStatus":"'$apache_status'","databaseStatus":"'$mariadb_status'","siteData":'$site_data'}'
+data='{"apacheStatus":"'$apache_status'","databaseStatus":"'$mariadb_status'","siteData":'$site_data'}'
 
+#echo $data
 
 cabeceras="Content-Type: application/json"
 # Enviar la petición POST usando curl
