@@ -32,7 +32,6 @@ osData=$(generar_arreglo_json "$comando");
 fecha_hora=$(date +"%Y-%m-%d %H:%M:%S")
 
 data='{"virtualboxExtension":'$virtualboxGuest',"osData":'$osData',"timestamp":"'$fecha_hora'"}'
-echo $data
 
 # Parametros de la petición
 cabeceras="Content-Type: application/json"
